@@ -1,0 +1,44 @@
+--- root_cause_analysis/trace_analysis/src/predicate_analysis.rs        2022-11-02 01:58:17.052955935 +0800
++++ root_cause_analysis_jingquan/trace_analysis/src/predicate_analysis.rs       2022-11-02 02:04:13.557027505 +0800
+@@ -27,24 +27,31 @@
+     }
+
+     fn evaluate_predicate(trace_analyzer: &TraceAnalyzer, mut predicate: Predicate) -> Predicate {
+-        let true_positives = trace_analyzer
++        let crash_false = trace_analyzer
+             .crashes
+             .as_slice()
+             .par_iter()
+             .map(|t| t.instructions.get(&predicate.address))
+             .filter(|i| predicate.execute(i))
+-            .count() as f64
+-            / trace_analyzer.crashes.len() as f64;
+-        let true_negatives = trace_analyzer
++            .count() as f64;
++        let non_crash_false = trace_analyzer
+             .non_crashes
+             .as_slice()
+             .par_iter()
+             .map(|t| t.instructions.get(&predicate.address))
+             .filter(|i| !predicate.execute(i))
+-            .count() as f64
+-            / trace_analyzer.non_crashes.len() as f64;
++            .count() as f64;
+
+-        predicate.score = (true_positives + true_negatives) / 2.0;
++        predicate.score = (crash_false + non_crash_false) / (trace_analyzer.crashes.len() as f64 + trace_analyzer.non_crashes.len() as f64);
++
++        // println!(
++            // "crash_false={}, non_crash_false={}, crash_len={}, non_crash_len={}, predicate_socre={}",
++                       // crash_false,
++                       // non_crash_false,
++            // trace_analyzer.crashes.len(),
++                       // trace_analyzer.non_crashes.len(),
++                       // predicate.score
++        // );
+
+         predicate
+     }
+
+
+

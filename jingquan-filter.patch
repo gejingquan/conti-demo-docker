@@ -1,0 +1,33 @@
+--- afl-fuzz/afl-fuzz.c 2022-10-18 01:07:46.351478033 +0800
++++ afl-fuzz-jingquan/afl-fuzz.c        2022-10-18 01:09:25.000000000 +0800
+@@ -283,6 +283,7 @@ static s32 interesting_32[] = { INTEREST
+ /* Crash exploration */
+
+ static u32 unique_non_crash_id = 0;
++static u32 unique_non_crash_counter[100];
+
+ /* Fuzzing stages */
+
+@@ -3298,11 +3299,14 @@ keep_as_crash:
+       fn = alloc_printf("%s/non_crashes/id_%06u_%u", out_dir, queued_paths, unique_non_crash_id);
+
+ #endif /* ^!SIMPLE_FILES */
+-      fd = open(fn, O_WRONLY | O_CREAT | O_EXCL, 0600);
+-      if (fd < 0) PFATAL("Unable to create '%s'", fn);
+-      ck_write(fd, mem, len, fn);
+-      close(fd);
+-      unique_non_crash_id += 1;
++         if(unique_non_crash_counter[queued_paths]<5){
++                 fd = open(fn, O_WRONLY | O_CREAT | O_EXCL, 0600);
++                 if (fd < 0) PFATAL("Unable to create '%s'", fn);
++                 ck_write(fd, mem, len, fn);
++                 close(fd);
++                 unique_non_crash_id += 1;
++                 unique_non_crash_counter[queued_paths]+=1;
++         }
+       return keeping;
+
+   }
+
+
+
