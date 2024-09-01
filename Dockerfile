@@ -5,8 +5,7 @@ MAINTAINER Jingquan Ge <gejingquan1986823@gmail.com>
 # ENV http_proxy "http://uib13471:Conti2020!@cias3basic.conti.de:8080"
 # ENV https_proxy "http://uib13471:Conti2020!@cias3basic.conti.de:8080"
 # install git
-RUN apt-get update
-RUN apt-get -y install git
+RUN apt-get update &&  apt-get -y install git
 # install gcc
 RUN apt -y install build-essential
 RUN apt-get -y install manpages-dev
