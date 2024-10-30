@@ -72,10 +72,10 @@ RUN apt-get -y install ruby-full
 RUN apt-get -y install bison
 WORKDIR /aurora
 
-COPY ./RCA_v1_installation.sh /aurora
-RUN chmod u+x RCA_v1_installation.sh
-RUN chmod g+x RCA_v1_installation.sh
-RUN chmod o+x RCA_v1_installation.sh
+COPY ./RCA_conti_demo_installation.sh /aurora
+RUN chmod u+x RCA_conti_demo_installation.sh
+RUN chmod g+x RCA_conti_demo_installation.sh
+RUN chmod o+x RCA_conti_demo_installation.sh
 
 COPY ./NormalFuzz.sh /aurora
 RUN chmod u+x NormalFuzz.sh
@@ -88,10 +88,12 @@ RUN chmod g+x RCAfuzz.sh
 RUN chmod o+x RCAfuzz.sh
 
 
-COPY ./jingquan-filter.patch    /aurora
-COPY ./jingquan-analyzer.patch  /aurora
+COPY ./RCA.sh    /aurora
+RUN chmod u+x RCA.sh
+RUN chmod g+x RCA.sh
+RUN chmod o+x RCA.sh
 
-RUN /aurora/RCA_v1_installation.sh
+RUN /aurora/RCA_conti_demo_installation.sh
 
 WORKDIR /AFL
 
