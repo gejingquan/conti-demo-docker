@@ -70,6 +70,7 @@ CMD ["/AFL/afl-fuzz.sh"]
 
 RUN apt-get -y install ruby-full
 RUN apt-get -y install bison
+RUN apt-get -y install cargo
 WORKDIR /aurora
 
 COPY ./RCA_conti_demo_installation.sh /aurora
