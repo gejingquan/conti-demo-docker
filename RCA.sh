@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd /aurora
 AURORA_GIT_DIR="$(pwd)/aurora"
 cd evaluation
 EVAL_DIR=`pwd`
