@@ -49,5 +49,6 @@ cargo build --release --bin rca
 cargo run --release --bin rca -- --eval-dir $EVAL_DIR --trace-dir $EVAL_DIR --monitor --rank-predicates
 cargo run --release --bin addr2line -- --eval-dir $EVAL_DIR
 
+cp  $EVAL_DIR/ranked_predicates_verbose.txt  $job_output
 
 
