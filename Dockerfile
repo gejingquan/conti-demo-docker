@@ -96,6 +96,8 @@ RUN chmod g+x RCA.sh
 RUN chmod o+x RCA.sh
 
 RUN /aurora/RCA_conti_demo_installation.sh
+RUN mkdir /aurora/evaluation/seed
+COPY ./user_after_free.rb   /aurora/evaluation/seed/
 
 WORKDIR /AFL
 
