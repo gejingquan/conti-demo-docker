@@ -28,7 +28,6 @@ echo job_dictionary is        :$job_dictionary
 echo ==============================================
 
 
-rm -rf  $EVAL_DIR/binary_fuzz
 rm -rf  $EVAL_DIR/binary_trace
 rm -rf  $EVAL_DIR/inputs/crashes/*
 rm -rf  $EVAL_DIR/inputs/non_crashes/*
