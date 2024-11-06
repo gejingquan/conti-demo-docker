@@ -58,6 +58,7 @@ echo Root cause analysis has been completed!
 echo RCAfuzz start！
 
 timeout 20000 $AFL_DIR/afl-fuzz -C -m none -i $EVAL_DIR/seed -o $job_output   -S $job_fuzzer_identifier -- $EVAL_DIR/binary_fuzz @@
+chmod -R 777 $job_output
 
 echo RCAfuzz has been completed！
 
