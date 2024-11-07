@@ -45,9 +45,6 @@ python3 tracing.py $EVAL_DIR/binary_trace $EVAL_DIR/inputs $EVAL_DIR/traces
 python3 addr_ranges.py --eval_dir $EVAL_DIR $EVAL_DIR/traces
 
 cd $AURORA_GIT_DIR/root_cause_analysis
-cargo clean
-cargo build --release --bin monitor
-cargo build --release --bin rca
 cargo run --release --bin rca -- --eval-dir $EVAL_DIR --trace-dir $EVAL_DIR --monitor --rank-predicates
 cargo run --release --bin addr2line -- --eval-dir $EVAL_DIR
 
