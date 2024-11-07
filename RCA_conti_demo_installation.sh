@@ -49,5 +49,10 @@ make obj-intel64/aurora_tracer.so
 cd -
 mkdir -p $EVAL_DIR/traces
 
+cd $AURORA_GIT_DIR/root_cause_analysis
+cargo clean
+cargo build --release --bin monitor
+cargo build --release --bin rca
+
 
 
