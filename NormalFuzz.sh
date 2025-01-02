@@ -40,7 +40,7 @@ else
       #AFL command to run with dictionary option -x
       echo "\$job_dictionary is NOT empty"
       echo ./afl-fuzz -i $job_corpus -o $job_output -x $job_dictionary -S $job_fuzzer_identifier -m none  $EVAL_DIR/mruby_fuzz @@
-      /AFL/afl-fuzz -i $job_corpus -o $job_output -x $job_dictionary -S $job_fuzzer_identifier -m none $EVAL_DIR/mruby_fuzz @@
+      LD_LIBRARY_PATH=/AFL/2025.01.01_coverage_afl-g++/all /AFL/afl-fuzz -i $job_corpus -o $job_output -x $job_dictionary -S $job_fuzzer_identifier -m none $EVAL_DIR/mruby_fuzz @@
 fi
 echo normal AFL mruby over!
 
