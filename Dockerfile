@@ -101,8 +101,8 @@ COPY ./user_after_free.rb   /aurora/evaluation/seed/
 
 WORKDIR /AFL
 
-RUN apt update
-RUN apt install pip
+RUN apt-get update
+RUN apt-get -y install pip
 RUN pip install gdown
 RUN gdown "https://drive.google.com/uc?id=1GirdS160PKkCkJKH5dA9MTLzkroL3bo8"
 RUN unzip 2025.01.01_coverage_afl-g++.zip
