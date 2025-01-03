@@ -20,7 +20,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get install -q -y software-properties-common
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test -y
 RUN apt-get -qq update && apt-get install -qy g++ gcc git wget
-RUN wget --max-redirect 20 https://boostorg.jfrog.io/artifactory/main/release/1.71.0/source/boost_1_71_0.tar.gz
+RUN wget --max-redirect 20 https://archives.boost.io/release/1.71.0/source/boost_1_71_0.tar.gz
 RUN mkdir -p /usr/include/boost && tar zxf boost_1_71_0.tar.gz -C /usr/include/boost --strip-components=1
 # install libclang: TDO
 
