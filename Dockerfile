@@ -106,6 +106,7 @@ RUN apt-get -y install pip
 RUN pip install gdown
 RUN gdown "https://drive.google.com/uc?id=1GirdS160PKkCkJKH5dA9MTLzkroL3bo8"
 RUN unzip 2025.01.01_coverage_afl-g++.zip
+RUN chmod -R 777 2025.01.01_coverage_afl-g++
 RUN chmod 777 /AFL/2025.01.01_coverage_afl-g++/bin/char_arr_to_vec_target
 
 
