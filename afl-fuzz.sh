@@ -26,8 +26,8 @@ then
      #AFL command to run without dictionary option
      echo "\$job_dictionary is empty"
      # ./afl-fuzz -i ./vol/$job_corpus -o ./vol/$job_name/out -M fuzzer$job_parallel_threads ./vol/$job_name/$job_fuzz_target_name @@
-     echo ./afl-fuzz -i $job_corpus -o $job_output -S $job_fuzzer_identifier -m none $job_fuzz_target_path @@
-     ./afl-fuzz -i $job_corpus -o $job_output -S $job_fuzzer_identifier -m none $job_fuzz_target_path @@
+     echo LD_LIBRARY_PATH=/AFL/vol/lib ./afl-fuzz -i $job_corpus -o $job_output -S $job_fuzzer_identifier -m none $job_fuzz_target_path @@
+     LD_LIBRARY_PATH=/AFL/vol/lib ./afl-fuzz -i $job_corpus -o $job_output -S $job_fuzzer_identifier -m none $job_fuzz_target_path @@
 else
       #AFL command to run with dictionary option -x
       echo "\$job_dictionary is NOT empty"
