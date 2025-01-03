@@ -34,8 +34,8 @@ then
      echo "\$job_dictionary is empty"
      # ./afl-fuzz -i ./vol/$job_corpus -o ./vol/$job_name/out -M fuzzer$job_parallel_threads ./vol/$job_name/$job_fuzz_target_name @@
 
-     echo ./afl-fuzz -i $job_corpus -o $job_output -S $job_fuzzer_identifier -m none  $EVAL_DIR/mruby_fuzz @@
-     /AFL/afl-fuzz -i $job_corpus -o $job_output -S $job_fuzzer_identifier -m none $EVAL_DIR/mruby_fuzz @@
+     echo LD_LIBRARY_PATH=/AFL/2025.01.01_coverage_afl-g++/all ./afl-fuzz -i $job_corpus -o $job_output -S $job_fuzzer_identifier -m none  $EVAL_DIR/mruby_fuzz @@
+     LD_LIBRARY_PATH=/AFL/2025.01.01_coverage_afl-g++/all /AFL/afl-fuzz -i $job_corpus -o $job_output -S $job_fuzzer_identifier -m none $EVAL_DIR/mruby_fuzz @@
 else
       #AFL command to run with dictionary option -x
       echo "\$job_dictionary is NOT empty"
