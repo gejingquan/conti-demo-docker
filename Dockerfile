@@ -1,5 +1,5 @@
 # The whole AFL is built on ubuntu 20.04
-FROM ubuntu:focal
+FROM ubuntu:22.04
 
 MAINTAINER Jingquan Ge <gejingquan1986823@gmail.com>
 # ENV http_proxy "http://uib13471:Conti2020!@cias3basic.conti.de:8080"
