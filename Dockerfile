@@ -70,7 +70,13 @@ CMD ["/AFL/afl-fuzz.sh"]
 
 RUN apt-get -y install ruby-full
 RUN apt-get -y install bison
-RUN apt-get -y install cargo
+
+# Install Rust using rustup instead of apt cargo to get a newer version
+RUN apt-get update && apt-get install -y curl
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+
 RUN apt-get update && apt-get -y install cmake
 WORKDIR /aurora
 
@@ -104,7 +110,7 @@ WORKDIR /AFL
 RUN apt-get update
 RUN apt-get -y install pip
 RUN pip install gdown
-RUN gdown "https://drive.google.com/uc?id=1GirdS160PKkCkJKH5dA9MTLzkroL3bo8"
+RUN gdown "https://drive.google.com/uc?id=1Hss5uo7Yg_kJnYGhLZygK2og9LDU7X8o"
 RUN unzip 2025.01.01_coverage_afl-g++.zip
 RUN chmod -R 777 2025.01.01_coverage_afl-g++
 
